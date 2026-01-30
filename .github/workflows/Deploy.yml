@@ -45,4 +45,4 @@ jobs:
           rm -rf /home/swadtk/software
           mkdir -p /home/swadtk/software
           mkdir -p /home/swadtk/software/arch-design-toolkit
-          mv build /home/swadtk/software/arch-design-toolkit
+          mv build/* /home/swadtk/software/arch-design-toolkit/
