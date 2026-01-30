@@ -1,9 +1,6 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
-
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
-
 const config: Config = {
   title: 'My Site',
   tagline: 'Dinosaurs are cool',
@@ -22,8 +19,8 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'Quantum technology', // Usually your GitHub org/user name.
+  projectName: 'sw-arch-and-design-toolkit', // Usually your repo name.
 
   onBrokenLinks: 'throw',
 
@@ -69,7 +66,41 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
+    algolia: {
+      // The application ID provided by Algolia
+      appId: 'YOUR_APP_ID',
+
+      // Public API key: it is safe to commit it
+      apiKey: 'YOUR_SEARCH_API_KEY',
+
+      indexName: 'YOUR_INDEX_NAME',
+
+      // Optional: see doc section below
+      contextualSearch: true,
+
+      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      externalUrlRegex: 'external\\.com|domain\\.com',
+
+      // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+      replaceSearchResultPathname: {
+        from: '/docs/', // or as RegExp: /\/docs\//
+        to: '/',
+      },
+
+      // Optional: Algolia search parameters
+      searchParameters: {},
+
+      // Optional: path for search page that enabled by default (`false` to disable it)
+      searchPagePath: 'search',
+
+      // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
+      insights: false,
+
+      // Optional: whether you want to use the new Ask AI feature (undefined by default)
+      askAi: 'YOUR_ALGOLIA_ASK_AI_ASSISTANT_ID',
+
+      //... other Algolia params
+    },
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
       respectPrefersColorScheme: true,
@@ -89,7 +120,7 @@ const config: Config = {
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/loknath2002/sw-arch-and-design-toolkit/tree/main',
           label: 'GitHub',
           position: 'right',
         },
@@ -133,7 +164,7 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/loknath2002/sw-arch-and-design-toolkit/tree/main',
             },
           ],
         },
