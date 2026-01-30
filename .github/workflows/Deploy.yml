@@ -42,5 +42,7 @@ jobs:
           npm run build
     
           # Deploy build
-          rm -rf /home/swadtk/build
+          rm -rf /home/swadtk/software
+          mkdir -p /home/swadtk/software
+          mkdir -p /home/swadtk/arch-design-toolkit
           mv build /home/swadtk/software/arch-design-toolkit
