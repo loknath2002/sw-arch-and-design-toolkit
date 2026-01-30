@@ -43,4 +43,4 @@ jobs:
     
           # Deploy build
           rm -rf /home/swadtk/build
-          mv build /home/swadtk/build
+          mv build /home/swadtk/software/arch-design-toolkit
