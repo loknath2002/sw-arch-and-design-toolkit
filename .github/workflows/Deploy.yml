@@ -25,10 +25,22 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22
         script: |
-          cd ~/home/swadtk/src
-          git pull origin main
-          git status
+          set -e  # Stop on errors
+          # Ensure deploy directory exists
+          mkdir -p /home/swadtk/src
+          cd /home/swadtk/src
+
+          # Clone if empty, else pull
+          if [ ! -d ".git" ]; then
+            git clone https://github.com/loknath2002/sw-arch-and-design-toolkit.git .
+          else
+            git pull origin main
+          fi
+
+          # Build
           npm install
           npm run build
-          mv ~/home/swadtk/src/build ~/home/swadtk/build
-          rm -r ~/home/swadtk/src/
+    
+          # Deploy build
+          rm -rf /home/swadtk/build
+          mv build /home/swadtk/build
