@@ -1,7 +1,7 @@
 # Software Architecture and Design Toolkit
 ![Deployment](https://github.com/loknath2002/sw-arch-and-design-toolkit/actions/workflows/Deploy.yml/badge.svg)
 
-A complete toolkit for software engineers, architects, and developers to design effective software. It brings together software patterns, best practices, and practical examples all in one place.
+A handy toolkit for software engineers, architects, and developers to design effective software. It brings together software patterns, best practices, and practical examples all in one place.
 
 ### Browse the toolkit [here](https://quantum-technology.in/software/arch-design-toolkit/)
 
