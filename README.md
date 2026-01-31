@@ -1,41 +1,30 @@
-# Website
+# Software Architecture and Design Toolkit
+![Deployment](https://github.com/loknath2002/sw-arch-and-design-toolkit/actions/workflows/Deploy.yml/badge.svg)
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+A complete toolkit for software engineers, architects, and developers to design effective software. It brings together software patterns, best practices, and practical examples all in one place.
 
-## Installation
+### Browse the toolkit [here](https://quantum-technology.in/software/arch-design-toolkit/)
 
-```bash
-yarn
+## Contribution
+
+To [contribute](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project), fork the repository and create a pull request from a branch in your fork.
+
+## Local Development and Testing
+
+The repository is uses [Docusaurus](https://docusaurus.io/) and the basic requirements are **node(20.0 or above) and npm**
+
+### One time tasks
+
+Upon fresh clone of the project dependencies must be installed, in order to do that navigate to the repo directory and run the following 
+
 ```
-
-## Local Development
-
-```bash
-yarn start
+npm install
 ```
+### Testing locally
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+In order to test the changes a development server needs to be run, that can be achieved by running ```npm run start```and to browser the docs visit `http://localhost:3000/software/arch-design-toolkit/`
 
-## Build
 
-```bash
-yarn build
-```
+### Deployment
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-## Deployment
-
-Using SSH:
-
-```bash
-USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+Upon the approval of the Pull Request the changes will be deployed automatically.
