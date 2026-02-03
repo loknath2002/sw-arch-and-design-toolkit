@@ -1,0 +1,71 @@
+---
+sidebar_position: 1
+sidebar_label: Title to show in side bar
+---
+
+> Add Docusaurus react imports as needed, remove this if there are no imports.
+
+# Title of the topic
+
+> Last updated : YYYY-MM-DD
+
+Here onwards the contents of the document are written, following are few hints to get started
+
+- Describe the Intent/Purpose of the document
+- Describe what is the problem/challenge.
+- Describe how the set problem is solved.
+- Make use of [UML/Drawings](https://docusaurus.io/docs/next/markdown-features/diagrams) to elaborate the necessary parts.
+- Make use of [code blocks](https://docusaurus.io/docs/next/markdown-features/code-blocks) where necessary.
+- Describe pros, cons and gotchas.
+- Don't hesitate to add multiple parts to the document.
+
+## Further Reading & References
+
+Remove all the bullet points if there are no references to record.
+
+- [Wikipedia - Markdown](https://en.wikipedia.org/wiki/Markdown)
+- External Links to additional content, other websites, papers, books, so on. 
+
+##### Contributors
+
+> [Loknath](https://github.com/loknath2002)
+
+## Appendix
+
+This section is for reference only, **please remove this section completely.**
+
+### Diagram Sample
+
+[Mermaid](https://mermaid.js.org/syntax/flowchart.html) plugin is the primary diagram renderer. Consider using the same, however image embedding is also allowed as well using `![Image](relative path to image)`
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+
+### Multi Language Code Sample
+
+> Place the imports near the top of the file
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="id_hw_js" label="JS">
+```js title="HelloCodeTitle.js"
+function HelloCodeTitle(props) {
+  return <h1>Hello, World!</h1>;
+}
+```
+  </TabItem>
+  <TabItem value="id_hw_cs" label="C#" default>
+```csharp title="HelloCodeTitle.cs"
+public void HelloCodeTitle(props) 
+{
+  return Console.WriteLine("Hello World!");
+}
+```
+  </TabItem>
+</Tabs>

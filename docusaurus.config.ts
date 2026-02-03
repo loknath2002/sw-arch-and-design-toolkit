@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Software Arch & Design(SAD) Toolkit',
@@ -32,6 +32,11 @@ const config: Config = {
     locales: ['en'],
   },
 
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
+
   presets: [
     [
       'classic',
@@ -41,7 +46,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/loknath2002/sw-arch-and-design-toolkit/tree/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -51,6 +56,9 @@ const config: Config = {
   ],
 
   themeConfig: {
+    mermaid: {
+      theme: {light: 'forest', dark:'dark'},
+    },
     algolia: {
       // The application ID provided by Algolia
       appId: 'YOUR_APP_ID',
@@ -98,10 +106,20 @@ const config: Config = {
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          type: 'localeDropdown',
+          position: 'right',
+        },
+        {
+          type: 'doc',
           position: 'left',
           label: 'Architecture',
+          docId: '/category/software-architecture'
+        },
+        {
+          type: 'doc',
+          position: 'left',
+          label: 'Design',
+          docId: '/category/software-design'
         },
         {
           href: 'https://github.com/loknath2002/sw-arch-and-design-toolkit/tree/main',
@@ -117,8 +135,12 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'Software Architecture',
+              to: '/docs/category/software-architecture',
+            },
+            {
+              label: 'Software Design',
+              to: '/docs/category/software-design',
             },
           ],
         },
@@ -135,6 +157,7 @@ const config: Config = {
       copyright: `Copyright © ${new Date().getFullYear()} Quantum Technology. Built with Docusaurus. <br><a style="color: #ebedf0;" href="https://www.flaticon.com/free-icons/programmer" title="programmer icons">Programmer icons created by Flat Icons - Flaticon</a>`,
     },
     prism: {
+      additionalLanguages: ['csharp', 'java', 'php', 'typescript'],
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
