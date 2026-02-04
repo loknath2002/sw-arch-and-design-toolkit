@@ -36,7 +36,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={`Home of SAD-TK`}
-      description="Description will go into a meta tag in <head />">
+      description="A handy toolkit for software engineers, architects, and developers to design effective software. <head />">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
