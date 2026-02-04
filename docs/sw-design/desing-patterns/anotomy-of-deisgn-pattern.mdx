@@ -1,0 +1,70 @@
+---
+sidebar_position: 1
+sidebar_label: Anatomy of a design pattern
+---
+
+#  Anatomy of a design pattern
+
+A design pattern provides a schema for **refining the sub-systems or components** of a software system or components of a software system or the relations between them. It describes a **commonly-recurring** structure of communicating components that **solves a general design problem** within a **particular context** <sup><a href="#ref-1">[1]</a></sup>
+
+When boiled down to it's core a design pattern
+- Provides a **reusable solution** to a **commonly occurring** software problem.
+- Provides a **well known solution** for a **common** problem under certain **context**.
+- Provides a **template** to solve a **well known problem** under **well known context**.
+
+
+## Parts of a design pattern
+
+Every design pattern has 4 parts associated to it 
+
+### 1. Context
+
+Design Situation which gives rise to the design problem. This allows to describe the problem in real world terms.
+
+Consider the following case-study, `ClassA` and `Class` B would like to use awesome features from `ClassC`, however creation of ClassB requires one big complicated step. 
+
+### 2. Problem
+
+Set of problems which arise in the given context.
+
+From the case-study, few obvious problems are
+
+- ClassA and B will need to know more than required details of ClassC.
+- ClassC's dependencies/imports/headers/usings are required to be inherited by Class A and B.
+- Changes in creation steps of ClassC will break ClassA and ClassB.
+
+### 3. Solution
+
+Describes the elements that make up the design, including their relationships, responsibilities, and collaborations. 
+
+The solution for the case-study is to encapsulate the steps required to create `ClassC` into a single function/class, i.e `ClassC` object is created exposing the creation logic to `ClassA` and `ClassB`. This resembles [**Factory**](/docs/sw-design//desing-patterns/creational/factory-design-pattern.mdx) pattern, since factory hides the creation logic, dependencies and details of `ClassC`. 
+
+### 4. Consequences
+
+Each pattern will come with positive and negative consequences, it is important to understands these since it helps choosing a design pattern based on trade-offs, and impacts of applying the pattern on the software's quality. 
+
+For the case-study, applying Factory pattern will have the following consequences
+- ✅Ensures Loose coupling between classes, reduces dependencies while encouraging encapsulation.
+- ✅Encourages Single responsibility principle, factory ensure the object creation logic is centralized.
+- ✅Encourages testable interfaces.
+- ❗Increase in overall complexity due to additional class.
+- ❗Potential performance and memory overhead, (this for instance might be critical in Embedded Systems)
+
+## Pattern Classification
+
+There are various category of pattern some being simple and low level and some being high level and some in the middle, they are  *Idioms*, *Architectural patterns* and *Design Patterns* respectively.
+
+The main focus of this page is design pattern and these are classified as follows
+- **[Creational patterns](/docs/category/creational-patterns)** : Provides various ways to create objects.  
+- **[Structural patterns](/docs/category/structural-patterns)** : Provides various arrangements of objects to compose a larger structure.
+- **[Behavioral patterns](/docs/category/behavioral-patterns)** : Provides various ways to enable communication and control runtime behavior.  
+
+
+## Further Reading & References
+
+[1] Pattern-Oriented Software Architecture: A System of Pattern, Volume 1
+
+
+##### Contributors
+
+> [Loknath](https://github.com/loknath2002)
