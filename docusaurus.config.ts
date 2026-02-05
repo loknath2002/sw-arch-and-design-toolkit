@@ -2,7 +2,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
-  title: 'Software Arch & Design(SAD) Toolkit',
+  title: 'Software Architecture and Design(SAD) Toolkit',
   tagline: 'A handy toolkit for software engineers, architects, and developers to design effective software. It brings together software patterns, best practices, and practical examples all in one place.',
   favicon: 'img/favicon.ico',
 
@@ -56,8 +56,12 @@ const config: Config = {
   ],
 
   themeConfig: {
+    metadata: [
+      { name: 'description', content: 'A handy toolkit for software engineers, architects, and developers to design effective software. It brings together software patterns, best practices, and practical examples all in one place.' },
+      { name: 'keywords', content: 'factory design pattern, parts of design pattern, design patterns, software design, software architecture, design pattern anatomy, creational patterns, structural patterns, behavioral patterns' },
+    ],
     mermaid: {
-      theme: {light: 'forest', dark:'dark'},
+      theme: { light: 'forest', dark: 'dark' },
     },
     algolia: {
       // The application ID provided by Algolia
@@ -94,7 +98,7 @@ const config: Config = {
 
       //... other Algolia params
     },
-    
+
     image: 'img/social-card.png',
     colorMode: {
       respectPrefersColorScheme: true,
