@@ -94,7 +94,8 @@ const config: Config = {
 
       //... other Algolia params
     },
-    image: 'img/docusaurus-social-card.jpg',
+    
+    image: 'img/social-card.png',
     colorMode: {
       respectPrefersColorScheme: true,
     },
