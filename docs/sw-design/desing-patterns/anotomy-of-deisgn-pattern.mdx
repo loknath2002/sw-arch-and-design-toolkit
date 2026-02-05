@@ -38,7 +38,7 @@ From the case-study, few obvious problems are
 
 Describes the elements that make up the design, including their relationships, responsibilities, and collaborations. 
 
-The solution for the case-study is to encapsulate the steps required to create `ClassC` into a single function/class, i.e `ClassC` object is created exposing the creation logic to `ClassA` and `ClassB`. This resembles [**Factory**](/docs/sw-design//desing-patterns/creational/factory-design-pattern.mdx) pattern, since factory hides the creation logic, dependencies and details of `ClassC`. 
+The solution for the case-study is to encapsulate the steps required to create `ClassC` into a single function/class, i.e `ClassC` object is created exposing the creation logic to `ClassA` and `ClassB`. This resembles [**Simple Factory**](/docs/sw-design//desing-patterns/creational/factory-design-pattern.mdx) pattern, since factory hides the creation logic, dependencies and details of `ClassC`. 
 
 ### 4. Consequences
 
@@ -60,6 +60,9 @@ The main focus of this page is design pattern and these are classified as follow
 - **[Structural patterns](/docs/category/structural-patterns)** : Provides various arrangements of objects to compose a larger structure.
 - **[Behavioral patterns](/docs/category/behavioral-patterns)** : Provides various ways to enable communication and control runtime behavior.  
 
+## Pattern Interactions
+
+A given design pattern usually isn't standalone or independent, they usually have relationships with other design patterns and shared common ideas amongst each other. `Singleton` on it's own may look independent however `getInstance` method of a singleton is actually a `Simple Factory`. When looked closely you will find multiple interactions amongst many design patterns.
 
 ## Further Reading & References
 
