@@ -64,6 +64,10 @@ const config: Config = {
     ],
     mermaid: {
       theme: { light: 'forest', dark: 'dark' },
+      options:
+      {
+        layout: "elk"
+      }
     },
     algolia: {
       // The application ID provided by Algolia
