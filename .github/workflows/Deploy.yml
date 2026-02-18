@@ -35,7 +35,7 @@ jobs:
             git clone https://github.com/loknath2002/sw-arch-and-design-toolkit.git .
           else
             git fetch origin
-            git pull origin main --force
+            git reset --hard origin/main
           fi
 
           # Build
