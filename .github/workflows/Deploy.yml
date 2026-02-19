@@ -45,4 +45,4 @@ jobs:
           # Deploy build
           mkdir -p /home/swadtk/software
           mkdir -p /home/swadtk/software/arch-design-toolkit
-          rsync -av --remove-source-files --recursive --prune-empty-dirs /home/swadtk/src/build/ /home/swadtk/software/arch-design-toolkit/
+          rsync -av --remove-source-files --recursive --prune-empty-dirs --delete /home/swadtk/src/build/ /home/swadtk/software/arch-design-toolkit/
