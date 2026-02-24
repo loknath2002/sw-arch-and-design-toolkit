@@ -13,11 +13,22 @@ To [contribute](https://docs.github.com/en/get-started/exploring-projects-on-git
 
 ## Adding a new document/topic
 
-1. All the documents are placed under `/docs` following the typical [Docusaurus](https://docusaurus.io/docs/next/create-doc) pattern. Familiarize yourself with the directory structure.
+1. All the documents are placed under `/docs` following the typical [Docusaurus](https://docusaurus.io/docs/next/create-doc) pattern.
 2. Look for the right directory to place the new document under.
-3. Copy the file `template.mdx` (root of the repo) to the identified target directory in `/docs`.
-4. Rename the file and contents as per the topic. Set up a [local development](#local-development-and-testing) environment to test the changes as you edit the document.
-5. Upon completion, submit a pull request. 🥳.
+3. Copy the file `doc_template.mdx` (root of the repo) to the identified target directory in `/docs`.
+4. Rename the file and Set up a [local development](#local-development-and-testing) environment to test the changes as you edit the document.
+5. Write the document, edit to your heart's content.
+6. Upon completion, submit a pull request for deployment🥳.
+
+## Adding a new blog post
+
+1. All the blog posts are placed under `/blog/2026`
+2. Copy the file `mm-dd-blog_template.mdx` (root of the repo) into `/blog/2026`
+3. Rename the above file as per blog post's month, date and the title. 
+4. Set up a [local development](#local-development-and-testing) environment to test the changes as you edit the document.
+5. Write the blogpost, edit to your heart's content.
+6. Upon completion, submit a pull request for deployment 🥳.
+
 
 ## Local Development and Testing
 

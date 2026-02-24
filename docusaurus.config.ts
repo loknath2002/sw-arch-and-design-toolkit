@@ -23,6 +23,8 @@ const config: Config = {
   projectName: 'sw-arch-and-design-toolkit', // Usually your repo name.
 
   onBrokenLinks: 'throw',
+  onBrokenAnchors: 'throw',
+  onBrokenMarkdownLinks: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -45,10 +47,20 @@ const config: Config = {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/loknath2002/sw-arch-and-design-toolkit/tree/main/',
+          editUrl: 'https://github.com/loknath2002/sw-arch-and-design-toolkit/tree/main/',
+        },
+        blog: {
+          showReadingTime: true,
+          feedOptions: {
+            type: ['rss', 'atom'],
+            xslt: true,
+          },
+          editUrl: 'https://github.com/loknath2002/sw-arch-and-design-toolkit/tree/main/',
+          onInlineTags: 'warn',
+          onInlineAuthors: 'warn',
+          onUntruncatedBlogPosts: 'warn',
+          blogSidebarTitle: 'All posts',
+          blogSidebarCount: 'ALL',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -132,6 +144,7 @@ const config: Config = {
           label: 'Design',
           docId: '/category/software-design'
         },
+        {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/loknath2002/sw-arch-and-design-toolkit/tree/main',
           label: 'GitHub',
@@ -158,6 +171,7 @@ const config: Config = {
         {
           title: 'More',
           items: [
+            { to: 'blog', label: 'Blog', position: 'left' },
             {
               label: 'GitHub',
               href: 'https://github.com/loknath2002/sw-arch-and-design-toolkit/tree/main',
