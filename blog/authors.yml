@@ -2,7 +2,16 @@ Loknath:
   name: Loknath
   title: Creator of SAD-TK
   url: https://github.com/loknath2002
-  image_url: https://github.com/loknath.png
+  image_url: https://avatars.githubusercontent.com/u/126454723
+  page: true
+  socials:
+    github: loknath2002
+  
+Rambahal:
+  name: Ram Bahal
+  title: AI Enthusiast
+  url: https://github.com/Rambahal
+  image_url: https://avatars.githubusercontent.com/u/29810319
   page: true
   socials:
     github: loknath2002
