@@ -43,6 +43,10 @@ const config: Config = {
     [
       'classic',
       {
+        gtag: {
+          trackingID: 'GTM-PNK3667B',
+          anonymizeIP: true,
+        },
         docs: {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
@@ -144,7 +148,7 @@ const config: Config = {
           label: 'Design',
           docId: '/category/software-design'
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        { to: '/blog', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/loknath2002/sw-arch-and-design-toolkit/tree/main',
           label: 'GitHub',
