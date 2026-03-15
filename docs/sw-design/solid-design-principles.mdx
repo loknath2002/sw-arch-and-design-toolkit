@@ -41,10 +41,11 @@ For instance consider the implementation detail of a function `SendEmail`, the f
 
 ### Real-world Examples 
 - [OpenCV's imgproc](https://docs.opencv.org/4.x/d7/dbd/group__imgproc.html) module focuses only on image processing.
-- [TextReader](https://learn.microsoft.com/en-us/dotnet/api/system.io.textreader?view=net-10.0) class focuses on reading only characters.
-- [re.match()](https://docs.python.org/3/library/re.html#re.Match) focuses only on matching strings.
+- [C# TextReader](https://learn.microsoft.com/en-us/dotnet/api/system.io.textreader?view=net-10.0) class focuses on reading only characters.
+- [Python re.match()](https://docs.python.org/3/library/re.html#re.Match) focuses only on matching strings.
 
 ### Class Diagram 
+
 #### Problem
 ```mermaid
 classDiagram
@@ -80,6 +81,73 @@ classDiagram
 <div className="text--center">
 ![open closed principle meme](https://i.imgflip.com/ajvf8m.jpg)
 </div>
+
+OCP encourages a design direction where **software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification[1]**
+
+:::info Challenges
+
+OCP is one of the difficult principles to achieve. How does one design a class/interface/function which is never supposed to be changed but extendable? 
+
+- Look out for variation's of a single operation, a function like `Pay` in payment processing, function like `Draw` in drawing application are prime candidates for closure.
+- OCP is typically implemented using abstractions and polymorphism on stable well known/well defined behaviors as illustrated in above point.
+- Let's bring back SRP into picture here, a class which breaks SRP will most likely make implementing OCP difficult.
+- There is no need for 100% Closure. Requirements change and hence the code.
+- Consider using plugins for larger modules
+
+:::
+
+### Benefits
+- Extendability : Adding new features to the code is streamlined.
+- Maintainability : Reduces the risk of breaking existing functionality.
+
+
+### Real-world Examples 
+- [C# Stream](https://learn.microsoft.com/en-us/dotnet/api/system.io.stream?view=net-10.0) Adding a new compression stream (e.g., LZMA) does not require modifying existing stream implementations.
+- [Python Logging Module](https://docs.python.org/3/library/logging.html#logging.Logger.addHandler) allows adding more handlers/plugin without needing any change in logging module.
+
+### Class Diagram 
+
+#### Problem
+```mermaid
+classDiagram
+    note for PasswordField "On first glance this looks ok but 
+    adding a new type of password which takes only numbers
+    will require change in existing PasswordFields logic"
+    note for PasswordField "Validation logic contains conditionals
+    for different password types. Adding new rules
+    requires modifying this class."
+    class PasswordField {
+        +AddCharacter(char)
+        +RemoveLastCharacter() 
+        +Clear()
+        -Validate()
+    }
+```
+#### Solution
+
+```mermaid
+classDiagram
+note "Introduce a abstraction with variations, this allows us
+ to add more password field's without modifying
+`AlphaNumericPasswordField` or `NumericPasswordField`"
+IPasswordField <|-- AlphaNumericPasswordField : Implements
+IPasswordField <|-- NumericPasswordField : Implements
+class IPasswordField {
+    <<interface>>
+    AddCharacter(char)
+    RemoveLastCharacter()
+    Clear()
+}
+
+class AlphaNumericPasswordField {
+    -ValidateEntryToBeAlphaNumeric()
+}
+
+class NumericPasswordField {
+    -ValidateEntryToBeNumeric()
+}
+```
+
 ## Liskov Substitution Principle
 
 <div class="text--center">
@@ -100,9 +168,7 @@ classDiagram
 
 ## Further Reading & References
 
-Remove all the bullet points if there are no references to record.
-
-- [Wikipedia - Markdown](https://en.wikipedia.org/wiki/Markdown)
+- [1][https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)
 - External Links to additional content, other websites, papers, books, so on. 
 
 ##### Contributors
