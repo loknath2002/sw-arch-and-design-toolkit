@@ -49,7 +49,7 @@ For instance consider the implementation detail of a function `SendEmail`, the f
 #### Problem
 ```mermaid
 classDiagram
-    note for EmailSender "What's CheckSpam doing here?
+    note for EmailSender "❗What's CheckSpam doing here?
     The decision to check for spam must be done 
     before the control reaches EmailSender"
     class EmailSender {
@@ -100,7 +100,6 @@ OCP is one of the difficult principles to achieve. How does one design a class/i
 - Extendability : Adding new features to the code is streamlined.
 - Maintainability : Reduces the risk of breaking existing functionality.
 
-
 ### Real-world Examples 
 - [C# Stream](https://learn.microsoft.com/en-us/dotnet/api/system.io.stream?view=net-10.0) Adding a new compression stream (e.g., LZMA) does not require modifying existing stream implementations.
 - [Python Logging Module](https://docs.python.org/3/library/logging.html#logging.Logger.addHandler) allows adding more handlers/plugin without needing any change in logging module.
@@ -110,10 +109,10 @@ OCP is one of the difficult principles to achieve. How does one design a class/i
 #### Problem
 ```mermaid
 classDiagram
-    note for PasswordField "On first glance this looks ok but 
+    note for PasswordField "❗On first glance this looks ok but 
     adding a new type of password which takes only numbers
     will require change in existing PasswordFields logic"
-    note for PasswordField "Validation logic contains conditionals
+    note for PasswordField "❗Validation logic contains conditionals
     for different password types. Adding new rules
     requires modifying this class."
     class PasswordField {
@@ -154,6 +153,73 @@ class NumericPasswordField {
 ![liskov substitution  principle meme](https://i.imgflip.com/ajvhyf.jpg)
 </div>
 
+LSP encourages proper hierarchical relations, in object-oriented programming stating that an object (such as a class) may be replaced by a sub-object (such as a class that extends the first class) without breaking the program.[3]
+
+:::info Challenges
+
+LSP is *very deceptive* and can easily lead to incorrect relationships and inheritance. Is Square a Rectangle? Is Penguin a Bird? 
+
+- Focus on specialization and then generalization, once the generalized patterns emerge from specialization refactor the repeating features into generalized super-class. 
+- Focus on immediate parent and substitution with the same. `Dollar` should substitute `Currency`. Since `Currency` substitutes `Money`, `Dollar` also implicitly substitutes `Money`.
+- Look out for common behaviors. For example, a `Computer` can `Boot`, so `Boot` may belong in a base/super class for computer-like devices. In a different example, a `Battery` can `Charge`, so `Charge` may belong in a base/super class for battery-related types.
+- If the relationship is not obvious, consider using composition over inheritance, this would prevent breaking LSP while still providing benefits of Reusability, Testability and Maintainability
+
+:::
+
+### Benefits
+- Reusability : Inherited/Sub-class can benefit from existing code.
+- Testability : Easier to test, i.e each Inherited/sub-class just needs to test itself.
+- Maintainability : Easier to maintain due to better testability and code reuse.
+
+### Real-world Examples 
+- [OpenCV Feature2D](https://docs.opencv.org/3.4/d0/d13/classcv_1_1Feature2D.html) Any of the algorithms can replace the base class Feature2D without breaking code.
+- [C# IEnumerable](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-10.0) Any collection (List, Array, HashSet, Dictionary, etc.) can be used wherever IEnumerable is expected.
+
+### Class Diagram 
+
+#### Problem
+```mermaid
+classDiagram
+note for WifiRouter "❗WifiRouter has no use of Shutdown.
+This means *Device* cannot be substitution with *WifiRouter*"
+Device <|-- WifiRouter
+Device <|-- DesktopComputer
+class Device {
+    Boot()
+    Shutdown()
+}
+
+class WifiRouter {
+    Boot()
+    Shutdown()
+}
+
+class DesktopComputer {
+    Boot()
+    Shutdown()
+}
+```
+#### Solution
+
+```mermaid
+classDiagram
+note "WifiRouter substitutes *Device* and so does *DesktopComputer*"
+Device <|-- WifiRouter
+Device <|-- DesktopComputer
+class Device {
+    Boot()
+}
+
+class WifiRouter {
+    Boot()
+}
+
+class DesktopComputer {
+    Boot()
+    Shutdown()
+}
+```
+
 ## Interface Segregation Principle
 
 <div class="text--center">
@@ -168,8 +234,9 @@ class NumericPasswordField {
 
 ## Further Reading & References
 
-- [1][https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)
-- External Links to additional content, other websites, papers, books, so on. 
+- [1] [Wikipedia - Open–closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)
+- [2] [objectmentor](https://objectmentor.com/resources/articles/ocp.pdf)
+- [3] [Wikipedia - Liskov substitution principle](https://en.wikipedia.org/wiki/Liskov_substitution_principle)
 
 ##### Contributors
 
