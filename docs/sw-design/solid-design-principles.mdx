@@ -22,7 +22,7 @@ The five SOLID principles
 ![single responsibility principle meme](https://i.imgflip.com/ajva9a.jpg)
 </div>
 
-The general idea of single responsibility principle is to ensure that a class, module or a function at most has one responsibility/job and has only one reason to change. 
+The general idea of single responsibility principle is to ensure that **a class, module or a function at most has one responsibility/job and has only one reason to change.** 
 
 :::info Challenges
 
@@ -44,7 +44,7 @@ For instance consider the implementation detail of a function `SendEmail`, the f
 - [C# TextReader](https://learn.microsoft.com/en-us/dotnet/api/system.io.textreader?view=net-10.0) class focuses on reading only characters.
 - [Python re.match()](https://docs.python.org/3/library/re.html#re.Match) focuses only on matching strings.
 
-### Class Diagram 
+### Illustration - Class Diagram 
 
 #### Problem
 ```mermaid
@@ -104,7 +104,7 @@ OCP is one of the difficult principles to achieve. How does one design a class/i
 - [C# Stream](https://learn.microsoft.com/en-us/dotnet/api/system.io.stream?view=net-10.0) Adding a new compression stream (e.g., LZMA) does not require modifying existing stream implementations.
 - [Python Logging Module](https://docs.python.org/3/library/logging.html#logging.Logger.addHandler) allows adding more handlers/plugin without needing any change in logging module.
 
-### Class Diagram 
+### Illustration - Class Diagram 
 
 #### Problem
 ```mermaid
@@ -153,7 +153,7 @@ class NumericPasswordField {
 ![liskov substitution  principle meme](https://i.imgflip.com/ajvhyf.jpg)
 </div>
 
-LSP encourages proper hierarchical relations, in object-oriented programming stating that an object (such as a class) may be replaced by a sub-object (such as a class that extends the first class) without breaking the program.[3]
+LSP encourages proper hierarchical relations, in object-oriented programming stating that **an object (such as a class) may be replaced by a sub-object (such as a class that extends the first class) without breaking the program.**[3]
 
 :::info Challenges
 
@@ -175,7 +175,7 @@ LSP is *very deceptive* and can easily lead to incorrect relationships and inher
 - [OpenCV Feature2D](https://docs.opencv.org/3.4/d0/d13/classcv_1_1Feature2D.html) Any of the algorithms can replace the base class Feature2D without breaking code.
 - [C# IEnumerable](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-10.0) Any collection (List, Array, HashSet, Dictionary, etc.) can be used wherever IEnumerable is expected.
 
-### Class Diagram 
+### Illustration - Class Diagram 
 
 #### Problem
 ```mermaid
@@ -226,6 +226,73 @@ class DesktopComputer {
 ![interface segregation principle meme](https://i.imgflip.com/ajvhsj.jpg)
 </div>
 
+ISP encourages interfaces to be small, simple and focused. **The interface segregation principle (ISP) states that no code should be forced to depend on methods it does not use.[4]**
+
+:::info Challenges
+
+ISP is much simpler to implement but it yields massive benefits to the clients. ISP also acts as yardstick on how well the software design is.
+
+- Domain expertise will go a long way in defining a minimal and focused interface.
+- Sometimes an interface may appear large due to domain complexity, however it is important to evaluate if the methods are cohesive. Think of a photo editing application, an interface might have 100's of image filters but all of them do filtering keeping the interface cohesive.
+
+:::
+
+### Benefits
+- Reusability : Small, focused interfaces are easier to understand, implement, and maintain compared to bloated interfaces.
+- Testability : The clients just need to mock/stub a small interface instead of a large, monolithic interface.
+- Maintainability : Easier to maintain as ISP enables smaller loosely coupled, well defined readable interfaces.
+
+### Real-world Examples 
+- [Java Comparable](https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html) Focuses on Comparing 2 objects. 
+- [C# IEnumerable](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-10.0) IEnumerable provides a minimal contract for iteration via GetEnumerator(), keeping the interface focused and lightweight.
+
+### Illustration - Class Diagram 
+
+#### Problem
+```mermaid
+classDiagram
+note for RoadCar "❗Clearly *RoadCar* has no use 
+of methods like *HarvestEnergy* and 
+*ChangeBrakeBias*"
+ICarManagement <|.. F1Car : Realization
+ICarManagement <|.. RoadCar : Realization
+class ICarManagement {
+    <<interface>>
+    ChangeBrakeBias()
+    Accelerate()
+    Brake()
+    HarvestEnergy()
+}
+
+
+```
+#### Solution
+
+```mermaid
+classDiagram
+F1Car ..|> IEnergyManagement : Realization
+F1Car ..|> ICarControl : Realization
+F1Car ..|> IDriveManagement : Realization
+ICarControl <|.. ElectricCar : Realization
+ICarControl <|.. RoadCar : Realization
+IEnergyManagement <|.. ElectricCar : Realization
+class ICarControl {
+    <<interface>>
+    Accelerate()
+    Brake()
+}
+
+class IDriveManagement {
+    <<interface>>
+    ChangeBrakeBias()
+}
+
+class IEnergyManagement{
+    <<interface>>
+    HarvestEnergy()
+}
+```
+
 ## Dependency Inversion Principle
 
 <div class="text--center">
@@ -237,6 +304,7 @@ class DesktopComputer {
 - [1] [Wikipedia - Open–closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)
 - [2] [objectmentor](https://objectmentor.com/resources/articles/ocp.pdf)
 - [3] [Wikipedia - Liskov substitution principle](https://en.wikipedia.org/wiki/Liskov_substitution_principle)
+- [4] [Wikipedia - Interface segregation principle](https://en.wikipedia.org/wiki/Interface_segregation_principle)
 
 ##### Contributors
 
