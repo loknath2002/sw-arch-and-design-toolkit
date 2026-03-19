@@ -299,6 +299,75 @@ class IEnergyManagement{
 ![dependency inversion principle meme](https://i.imgflip.com/ajvji3.jpg)
 </div>
 
+DIP encourages loose coupling between architectural layers. **High-level modules should not depend on low-level modules; both should depend on abstractions (interfaces or abstract classes)**[5]
+
+:::info Challenges
+
+Dependency inversion is conceptually simple but can become complex in large systems.
+
+- In large systems (with many interfaces), using a Dependency Injection framework can help manage dependencies effectively.
+- Consider various injection methods such as Constructor Injection, Method Injection, Setter/Property Injection etc. Dependency Injection is a common technique used to implement Dependency Inversion.
+:::
+
+### Benefits
+- Testability : The clients mock/stub lower level interfaces instead of having a real implementation.
+- Maintainability : Easier to maintain due to low coupling, change in lower level modules will have no impact high level module.
+
+### Illustration - Class Diagram 
+
+#### Problem
+```mermaid
+---
+title: TV Remote Control
+---
+classDiagram
+note for BluetoothCommunicator "Replacing Bluetooth with Wifi 
+will impact all the clients."
+note for SmartRemoteControl "High-level module"
+note for MobileAppRemoteControl "High-level module"
+note for BluetoothCommunicator "Low-level module"
+SmartRemoteControl ..> BluetoothCommunicator
+MobileAppRemoteControl ..> BluetoothCommunicator
+class BluetoothCommunicator {
+    Connect()
+    SendSignal()
+    Disconnect()
+}
+
+```
+#### Solution
+
+```mermaid
+---
+title: TV Remote Control
+---
+classDiagram
+note for Communicator "With the abstraction swapping between 
+bluetooth and wifi will not impact the clients"
+SmartRemoteControl ..> Communicator
+MobileAppRemoteControl ..> Communicator
+Communicator <|.. BluetoothCommunicator : Realization
+Communicator <|.. WifiCommunicator : Realization
+class Communicator {
+    <<interface>>
+    Connect()
+    SendSignal()
+    Disconnect()
+}
+
+
+class SmartRemoteControl {
+    -communicator: Communicator
+    +SmartRemoteControl(Communicator)
+}
+
+class MobileAppRemoteControl {
+    -communicator: Communicator
+    +SmartRemoteControl(Communicator)
+}
+
+```
+
 ## Further Reading & References
 
 - [1] [Wikipedia - Open–closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)
